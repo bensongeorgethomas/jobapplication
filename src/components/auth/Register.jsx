@@ -14,6 +14,14 @@ const Register = () => {
     }
   }, [isAuthenticated, navigate]);
 
+  useEffect(() => {
+    // Clear errors when unmounting or remounting
+    return () => {
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -43,8 +51,9 @@ const Register = () => {
   return (
     <div className='form-container'>
       <h1>
-        Account <span className='text-primary'>Register</span>
+        Create an <span className='text-primary'>Account</span>
       </h1>
+      {error && <div className='alert alert-danger'>{error}</div>}
       <form onSubmit={onSubmit}>
         <div className='form-group'>
           <label htmlFor='name'>Name</label>
@@ -55,6 +64,7 @@ const Register = () => {
             value={name}
             onChange={onChange}
             required
+            placeholder="John Doe"
           />
         </div>
         <div className='form-group'>
@@ -66,6 +76,7 @@ const Register = () => {
             value={email}
             onChange={onChange}
             required
+            placeholder="john@example.com"
           />
         </div>
         <div className='form-group'>
@@ -78,6 +89,7 @@ const Register = () => {
             onChange={onChange}
             required
             minLength='6'
+            placeholder="At least 6 characters"
           />
         </div>
         <div className='form-group'>
@@ -90,6 +102,7 @@ const Register = () => {
             onChange={onChange}
             required
             minLength='6'
+            placeholder="Repeat your password"
           />
         </div>
         <input
@@ -99,7 +112,7 @@ const Register = () => {
         />
       </form>
       <p className='my-1'>
-        Already have an account? <Link to='/login'>Sign In</Link>
+        Already have an account? <Link to='/login'>Log In</Link>
       </p>
     </div>
   );

@@ -14,21 +14,34 @@ connectDB();
 // Init Middleware
 app.use(express.json({ extended: false }));
 
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  'https://student-job-tracker-phi.vercel.app',
+  'http://student-job-tracker-phi.vercel.app',
+  'https://student-job-tracker.vercel.app',
+  'http://student-job-tracker.vercel.app',
+  'https://student-job-tracker-app.vercel.app',
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3002',
+  'http://localhost:3003',
+  'http://localhost:5173',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:3001',
+  'http://127.0.0.1:3002',
+  'http://127.0.0.1:3003',
+  'http://127.0.0.1:5173'
+].filter(Boolean);
+
 // CORS configuration
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production'
-    ? [
-        'https://student-job-tracker-phi.vercel.app',
-        'http://student-job-tracker-phi.vercel.app',
-        'https://student-job-tracker.vercel.app',
-        'http://student-job-tracker.vercel.app',
-        'https://student-job-tracker-app.vercel.app',
-        'http://localhost:3000',
-        'http://localhost:3001',
-        'http://localhost:3002',
-        'http://localhost:3003'
-      ]
-    : 'http://localhost:3000',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error(`Not allowed by CORS: ${origin}`));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token']

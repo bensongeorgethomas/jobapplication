@@ -14,6 +14,14 @@ const Login = () => {
     }
   }, [isAuthenticated, navigate]);
 
+  useEffect(() => {
+    // Clear errors when unmounting or remounting
+    return () => {
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -38,8 +46,9 @@ const Login = () => {
   return (
     <div className='form-container'>
       <h1>
-        Account <span className='text-primary'>Login</span>
+        Welcome <span className='text-primary'>Back</span>
       </h1>
+      {error && <div className='alert alert-danger'>{error}</div>}
       <form onSubmit={onSubmit}>
         <div className='form-group'>
           <label htmlFor='email'>Email Address</label>
@@ -50,6 +59,7 @@ const Login = () => {
             value={email}
             onChange={onChange}
             required
+            placeholder="Enter your email"
           />
         </div>
         <div className='form-group'>
@@ -61,6 +71,7 @@ const Login = () => {
             value={password}
             onChange={onChange}
             required
+            placeholder="Enter your password"
           />
         </div>
         <input

@@ -7,6 +7,20 @@ import api from '../utils/api';
 // Flag to use mock data when API is unavailable
 const USE_MOCK_DATA = false; // Set to false to use real authentication
 
+const getErrorMessage = (err, fallback) => {
+  const data = err.response?.data;
+
+  if (data?.msg) {
+    return data.msg;
+  }
+
+  if (typeof data === 'string' && data.trim()) {
+    return data;
+  }
+
+  return err.message || fallback;
+};
+
 // Initial state
 const initialState = {
   token: localStorage.getItem('token'),
@@ -75,12 +89,6 @@ export const AuthProvider = ({ children }) => {
       return;
     }
     
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
     try {
       const res = await api.post('/api/users', formData);
       dispatch({
@@ -92,7 +100,7 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       dispatch({
         type: 'REGISTER_FAIL',
-        payload: err.response?.data?.msg || 'Registration failed',
+        payload: getErrorMessage(err, 'Registration failed'),
       });
     }
   };
@@ -125,12 +133,6 @@ export const AuthProvider = ({ children }) => {
       return;
     }
     
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
     try {
       const res = await api.post('/api/auth', formData);
       dispatch({
@@ -142,7 +144,7 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       dispatch({
         type: 'LOGIN_FAIL',
-        payload: err.response?.data?.msg || 'Invalid credentials',
+        payload: getErrorMessage(err, 'Invalid credentials'),
       });
     }
   };
