@@ -1,0 +1,138 @@
+const dummyUserEmail = 'demo.student@example.com';
+
+const users = [
+  {
+    name: 'Alex Demo',
+    email: dummyUserEmail,
+    password: 'password123',
+    avatar:
+      'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y',
+  },
+];
+
+const jobs = [
+  {
+    userEmail: dummyUserEmail,
+    company: 'Google',
+    position: 'Software Engineering Intern',
+    location: 'Mountain View, CA',
+    status: 'Applied',
+    applicationDate: new Date('2026-09-01'),
+    jobDescription:
+      'Summer internship working with React, TypeScript, and internal developer tools.',
+    notes: 'Submitted resume through campus recruiting and asked an alum for a referral.',
+    salary: '$45/hr',
+    jobType: 'Internship',
+    url: 'https://careers.google.com/students/',
+    contactName: 'Maya Chen',
+    contactEmail: 'maya.chen@example.com',
+    contactPhone: '555-0101',
+  },
+  {
+    userEmail: dummyUserEmail,
+    company: 'Microsoft',
+    position: 'Explore Program Intern',
+    location: 'Redmond, WA',
+    status: 'Interview',
+    applicationDate: new Date('2026-08-25'),
+    jobDescription:
+      'Rotational internship for students interested in software engineering and product management.',
+    notes: 'Phone screen complete. Technical interview scheduled for next Friday.',
+    salary: '$42/hr',
+    jobType: 'Internship',
+    url: 'https://careers.microsoft.com/students',
+    contactName: 'Jordan Lee',
+    contactEmail: 'jordan.lee@example.com',
+    contactPhone: '555-0102',
+  },
+  {
+    userEmail: dummyUserEmail,
+    company: 'Stripe',
+    position: 'Frontend Engineering Intern',
+    location: 'San Francisco, CA',
+    status: 'Saved',
+    applicationDate: new Date('2026-09-08'),
+    jobDescription:
+      'Build polished dashboard experiences for payment and financial tooling.',
+    notes: 'Need to tailor resume toward frontend systems and accessibility work.',
+    salary: '$50/hr',
+    jobType: 'Internship',
+    url: 'https://stripe.com/jobs',
+    contactName: 'Priya Shah',
+    contactEmail: 'priya.shah@example.com',
+    contactPhone: '555-0103',
+  },
+  {
+    userEmail: dummyUserEmail,
+    company: 'Figma',
+    position: 'Product Engineering Intern',
+    location: 'New York, NY',
+    status: 'Offer',
+    applicationDate: new Date('2026-08-10'),
+    jobDescription:
+      'Partner with designers to build collaborative design tools and prototype workflows.',
+    notes: 'Offer received. Compare compensation, mentorship, and project scope.',
+    salary: '$48/hr',
+    jobType: 'Internship',
+    url: 'https://www.figma.com/careers/',
+    contactName: 'Noah Williams',
+    contactEmail: 'noah.williams@example.com',
+    contactPhone: '555-0104',
+  },
+  {
+    userEmail: dummyUserEmail,
+    company: 'Netflix',
+    position: 'Data Engineering Intern',
+    location: 'Los Gatos, CA',
+    status: 'Rejected',
+    applicationDate: new Date('2026-07-28'),
+    jobDescription:
+      'Create data pipelines and dashboards for streaming reliability insights.',
+    notes: 'Rejected after coding assessment. Review SQL window functions before next round.',
+    salary: '$46/hr',
+    jobType: 'Internship',
+    url: 'https://jobs.netflix.com/',
+    contactName: 'Taylor Morgan',
+    contactEmail: 'taylor.morgan@example.com',
+    contactPhone: '555-0105',
+  },
+  {
+    userEmail: dummyUserEmail,
+    company: 'Notion',
+    position: 'Full Stack Engineering Intern',
+    location: 'Remote',
+    status: 'Applied',
+    applicationDate: new Date('2026-09-11'),
+    jobDescription:
+      'Ship product features across editor, permissions, and collaboration surfaces.',
+    notes: 'Included project portfolio link and highlighted collaborative editor clone.',
+    salary: '$44/hr',
+    jobType: 'Remote',
+    url: 'https://www.notion.so/careers',
+    contactName: 'Avery Kim',
+    contactEmail: 'avery.kim@example.com',
+    contactPhone: '555-0106',
+  },
+  {
+    userEmail: dummyUserEmail,
+    company: 'Duolingo',
+    position: 'Mobile Engineering Intern',
+    location: 'Pittsburgh, PA',
+    status: 'Interview',
+    applicationDate: new Date('2026-08-18'),
+    jobDescription:
+      'Contribute to React Native learning experiences and experiment-driven product work.',
+    notes: 'Prepare examples of mobile UX polish and metrics-driven decisions.',
+    salary: '$40/hr',
+    jobType: 'Internship',
+    url: 'https://careers.duolingo.com/',
+    contactName: 'Sam Rivera',
+    contactEmail: 'sam.rivera@example.com',
+    contactPhone: '555-0107',
+  },
+];
+
+module.exports = {
+  users,
+  jobs,
+};
